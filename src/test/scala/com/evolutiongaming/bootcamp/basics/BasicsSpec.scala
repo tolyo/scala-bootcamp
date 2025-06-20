@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers._
 import org.scalacheck.Arbitrary._
 import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
 
-class BasicsSpec extends AnyFlatSpec with ScalaCheckDrivenPropertyChecks {
+  class BasicsSpec extends AnyFlatSpec with ScalaCheckDrivenPropertyChecks {
   "allBooleans" should "contain all possible boolean values" in {
     allBooleans.size shouldEqual 2
     allBooleans.reduce(_ && _) shouldEqual false
