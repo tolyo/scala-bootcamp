@@ -64,8 +64,18 @@ object ClassesAndTraits {
     }
 
   trait Account extends HasBalance {
-    // def addMoney(amount: Double)
-    // def takeMoney(amount: Double)
+    def addMoney(amount: Double): HasBalance = {
+      val newBalance = amount + this.balance
+      new HasBalance {
+        override def balance: Double = newBalance
+      }
+    }
+    def takeMoney(amount: Double) = {
+      val newBalance = this.balance - amount
+      new HasBalance {
+        override def balance: Double = newBalance
+      }
+    }
   }
 
   sealed trait User {
@@ -122,8 +132,8 @@ object ClassesAndTraits {
 
   // Question. Do you agree with how the stack is modelled here? What would you do differently?
   final case class Stack[A](elements: List[A] = Nil) {
-    def push(x: A): Stack[A] = ???
-    def peek: A              = ???
-    def pop: (A, Stack[A])   = ???
+    def push(x: A): Stack[A]  = Stack(x :: elements)
+    def peek: A               = elements.head
+    def pop: (A, Stack[A])    = (elements.head, Stack(elements.tail))
   }
 }
