@@ -60,7 +60,7 @@ object ClassesAndTraits {
   //
   def totalBalance(accounts: List[HasBalance]): HasBalance =
     new HasBalance {
-      def balance: Double = ???
+      def balance: Double = accounts.map(_.balance).sum
     }
 
   trait Account extends HasBalance {
